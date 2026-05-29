@@ -6,7 +6,7 @@ import ActivityFeed from "@/components/dashboard/activity-feed";
 import Incidents from "@/components/dashboard/incidents";
 
 import RpcStatus from "@/components/rpc/rpc-status";
-import NetworkHealth from "@/components/dashboard/network-health";
+import RpcMetrics from "@/components/rpc/rpc-metrics";
 
 export default function Home() {
   return (
@@ -27,37 +27,20 @@ export default function Home() {
         </div>
 
         <div className="mb-8 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
-          <StatsCard
-            title="Providers"
-            value="12"
-          />
-
-          <StatsCard
-            title="Online"
-            value="11"
-          />
-
-          <StatsCard
-            title="Avg Latency"
-            value="82ms"
-          />
-
-          <StatsCard
-            title="Incidents"
-            value="1"
-          />
+          <StatsCard title="Providers" value="12" />
+          <StatsCard title="Online" value="11" />
+          <StatsCard title="Avg Latency" value="82ms" />
+          <StatsCard title="Incidents" value="1" />
         </div>
 
         <div className="grid gap-6 lg:grid-cols-2">
+          <RpcMetrics />
           <RpcStatus />
-
-          <ActivityFeed />
         </div>
 
         <div className="mt-6 grid gap-6 lg:grid-cols-2">
+          <ActivityFeed />
           <Incidents />
-
-          <NetworkHealth />
         </div>
       </section>
     </main>
