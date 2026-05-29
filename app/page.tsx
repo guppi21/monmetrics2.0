@@ -1,9 +1,9 @@
 import Sidebar from "@/components/layout/sidebar";
 import Navbar from "@/components/layout/navbar";
 
-import StatsCard from "@/components/dashboard/stats-card";
 import ActivityFeed from "@/components/dashboard/activity-feed";
 import Incidents from "@/components/dashboard/incidents";
+import LiveStats from "@/components/dashboard/live-stats";
 
 import RpcStatus from "@/components/rpc/rpc-status";
 import RpcMetrics from "@/components/rpc/rpc-metrics";
@@ -26,11 +26,8 @@ export default function Home() {
           </p>
         </div>
 
-        <div className="mb-8 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
-          <StatsCard title="Providers" value="12" />
-          <StatsCard title="Online" value="11" />
-          <StatsCard title="Avg Latency" value="82ms" />
-          <StatsCard title="Incidents" value="1" />
+        <div className="mb-8">
+          <LiveStats />
         </div>
 
         <div className="grid gap-6 lg:grid-cols-2">
