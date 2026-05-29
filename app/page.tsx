@@ -1,55 +1,38 @@
-import Sidebar from "@/components/layout/sidebar";
-import Navbar from "@/components/layout/navbar";
-import StatsCard from "@/components/dashboard/stats-card";
+<>
+  <Navbar />
 
-export default function Home() {
-  return (
-    <main className="flex min-h-screen bg-slate-950 text-white">
+  <div className="mb-10">
 
-      <Sidebar />
+    <h1 className="text-5xl font-black">
+      Infrastructure Overview
+    </h1>
 
-      <section className="flex-1 p-8">
+    <p className="mt-3 text-slate-400">
+      RPC Analytics on Monad
+    </p>
 
-        <Navbar />
+  </div>
 
-        <div className="mb-10">
+  <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-4 mb-8">
 
-          <h1 className="text-5xl font-black">
-            Infrastructure Overview
-          </h1>
+    <StatsCard title="Providers" value="12" />
+    <StatsCard title="Online" value="11" />
+    <StatsCard title="Avg Latency" value="82ms" />
+    <StatsCard title="Incidents" value="1" />
 
-          <p className="mt-3 text-slate-400">
-            RPC Analytics on Monad
-          </p>
+  </div>
 
-        </div>
+  <div className="grid gap-6 lg:grid-cols-2">
 
-        <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
+    <RpcStatus />
 
-          <StatsCard
-            title="Providers"
-            value="12"
-          />
+    <ActivityFeed />
 
-          <StatsCard
-            title="Online"
-            value="11"
-          />
+  </div>
 
-          <StatsCard
-            title="Avg Latency"
-            value="82ms"
-          />
+  <div className="mt-6">
 
-          <StatsCard
-            title="Incidents"
-            value="1"
-          />
+    <Incidents />
 
-        </div>
-
-      </section>
-
-    </main>
-  );
-}
+  </div>
+</>
