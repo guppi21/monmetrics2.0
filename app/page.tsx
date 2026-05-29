@@ -5,8 +5,8 @@ import ActivityFeed from "@/components/dashboard/activity-feed";
 import Incidents from "@/components/dashboard/incidents";
 import LiveStats from "@/components/dashboard/live-stats";
 
-import RpcStatus from "@/components/rpc/rpc-status";
 import RpcMetrics from "@/components/rpc/rpc-metrics";
+import RpcCompare from "@/components/rpc/rpc-compare";
 
 export default function Home() {
   return (
@@ -32,7 +32,7 @@ export default function Home() {
 
         <div className="grid gap-6 lg:grid-cols-2">
           <RpcMetrics />
-          <RpcStatus />
+          <RpcCompare />
         </div>
 
         <div className="mt-6 grid gap-6 lg:grid-cols-2">
