@@ -1,46 +1,57 @@
 "use client";
 
 import { useEffect, useState } from "react";
+
 import { rpcs } from "@/data/rpcs";
 
+import RpcHealthBadge from "./rpc-health-badge";
+
 export default function RpcCompare() {
-  const [results, setResults] = useState<any[]>([]);
+  const [results, setResults] =
+    useState<any[]>([]);
+
+  async function refresh() {
+    const data = await Promise.all(
+      rpcs.map(async (rpc) => {
+        try {
+          const res = await fetch(
+            "/api/rpc?url=" +
+              encodeURIComponent(rpc.url)
+          );
+
+          const metrics =
+            await res.json();
+
+          return {
+            name: rpc.name,
+            ...metrics,
+          };
+        } catch {
+          return {
+            name: rpc.name,
+            status: "OFFLINE",
+          };
+        }
+      })
+    );
+
+    data.sort(
+      (a, b) =>
+        (a.latency || 9999) -
+        (b.latency || 9999)
+    );
+
+    setResults(data);
+  }
 
   useEffect(() => {
-    async function load() {
-      const data = await Promise.all(
-        rpcs.map(async (rpc) => {
-          try {
-            const res = await fetch(
-              "/api/rpc?url=" +
-                encodeURIComponent(rpc.url)
-            );
+    refresh();
 
-            const metrics = await res.json();
+    const interval =
+      setInterval(refresh, 10000);
 
-            return {
-              name: rpc.name,
-              ...metrics,
-            };
-          } catch {
-            return {
-              name: rpc.name,
-              status: "OFFLINE",
-            };
-          }
-        })
-      );
-
-      data.sort(
-        (a, b) =>
-          (a.latency || 9999) -
-          (b.latency || 9999)
-      );
-
-      setResults(data);
-    }
-
-    load();
+    return () =>
+      clearInterval(interval);
   }, []);
 
   return (
@@ -50,7 +61,6 @@ export default function RpcCompare() {
       </h3>
 
       <div className="space-y-4">
-
         {results.map((rpc, index) => (
           <div
             key={rpc.name}
@@ -61,9 +71,9 @@ export default function RpcCompare() {
                 #{index + 1} {rpc.name}
               </p>
 
-              <p className="text-xs text-slate-500">
-                {rpc.status}
-              </p>
+              <RpcHealthBadge
+                status={rpc.status}
+              />
             </div>
 
             <div className="text-cyan-400">
@@ -71,7 +81,6 @@ export default function RpcCompare() {
             </div>
           </div>
         ))}
-
       </div>
     </div>
   );
