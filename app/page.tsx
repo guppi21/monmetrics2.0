@@ -1,38 +1,65 @@
-<>
-  <Navbar />
+import Sidebar from "@/components/layout/sidebar";
+import Navbar from "@/components/layout/navbar";
 
-  <div className="mb-10">
+import StatsCard from "@/components/dashboard/stats-card";
+import ActivityFeed from "@/components/dashboard/activity-feed";
+import Incidents from "@/components/dashboard/incidents";
 
-    <h1 className="text-5xl font-black">
-      Infrastructure Overview
-    </h1>
+import RpcStatus from "@/components/rpc/rpc-status";
+import NetworkHealth from "@/components/dashboard/network-health";
 
-    <p className="mt-3 text-slate-400">
-      RPC Analytics on Monad
-    </p>
+export default function Home() {
+  return (
+    <main className="flex min-h-screen bg-slate-950 text-white">
+      <Sidebar />
 
-  </div>
+      <section className="flex-1 p-8">
+        <Navbar />
 
-  <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-4 mb-8">
+        <div className="mb-10">
+          <h1 className="text-5xl font-black">
+            Infrastructure Overview
+          </h1>
 
-    <StatsCard title="Providers" value="12" />
-    <StatsCard title="Online" value="11" />
-    <StatsCard title="Avg Latency" value="82ms" />
-    <StatsCard title="Incidents" value="1" />
+          <p className="mt-3 text-slate-400">
+            RPC Analytics on Monad
+          </p>
+        </div>
 
-  </div>
+        <div className="mb-8 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
+          <StatsCard
+            title="Providers"
+            value="12"
+          />
 
-  <div className="grid gap-6 lg:grid-cols-2">
+          <StatsCard
+            title="Online"
+            value="11"
+          />
 
-    <RpcStatus />
+          <StatsCard
+            title="Avg Latency"
+            value="82ms"
+          />
 
-    <ActivityFeed />
+          <StatsCard
+            title="Incidents"
+            value="1"
+          />
+        </div>
 
-  </div>
+        <div className="grid gap-6 lg:grid-cols-2">
+          <RpcStatus />
 
-  <div className="mt-6">
+          <ActivityFeed />
+        </div>
 
-    <Incidents />
+        <div className="mt-6 grid gap-6 lg:grid-cols-2">
+          <Incidents />
 
-  </div>
-</>
+          <NetworkHealth />
+        </div>
+      </section>
+    </main>
+  );
+}
