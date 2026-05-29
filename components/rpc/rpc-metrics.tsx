@@ -1,44 +1,66 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { rpcs } from "@/data/rpcs";
 
 export default function RpcMetrics() {
+  const [selected, setSelected] = useState(
+    rpcs[0].url
+  );
+
   const [data, setData] = useState<any>(null);
 
   useEffect(() => {
-    fetch("/api/rpc")
+    fetch(
+      "/api/rpc?url=" +
+        encodeURIComponent(selected)
+    )
       .then((res) => res.json())
       .then(setData);
-  }, []);
-
-  if (!data)
-    return (
-      <div className="rounded-3xl border border-slate-800 bg-slate-900/70 p-6">
-        Loading...
-      </div>
-    );
+  }, [selected]);
 
   return (
     <div className="rounded-3xl border border-slate-800 bg-slate-900/70 p-6">
-      <h3 className="mb-4 text-xl font-bold">
-        Live RPC Metrics
+      <h3 className="mb-5 text-xl font-bold">
+        RPC Analytics
       </h3>
 
-      <div className="space-y-3">
-        <p>Status: {data.status}</p>
+      <select
+        value={selected}
+        onChange={(e) =>
+          setSelected(e.target.value)
+        }
+        className="mb-5 w-full rounded-xl border border-slate-700 bg-slate-950 p-3"
+      >
+        {rpcs.map((rpc) => (
+          <option
+            key={rpc.url}
+            value={rpc.url}
+          >
+            {rpc.name}
+          </option>
+        ))}
+      </select>
 
-        <p>
-          Latency: {data.latency} ms
-        </p>
+      {!data ? (
+        <p>Loading...</p>
+      ) : (
+        <div className="space-y-3">
+          <p>Status: {data.status}</p>
 
-        <p>
-          Block Height: {data.blockHeight}
-        </p>
+          <p>
+            Latency: {data.latency} ms
+          </p>
 
-        <p>
-          Chain ID: {data.chainId}
-        </p>
-      </div>
+          <p>
+            Block Height: {data.blockHeight}
+          </p>
+
+          <p>
+            Chain ID: {data.chainId}
+          </p>
+        </div>
+      )}
     </div>
   );
 }
