@@ -1,83 +1,54 @@
+import Sidebar from "@/components/layout/sidebar";
 import Navbar from "@/components/layout/navbar";
-import RpcCard from "@/components/rpc/rpc-card";
-import { rpcs } from "@/data/rpcs";
+import StatsCard from "@/components/dashboard/stats-card";
 
 export default function Home() {
-  const mainnet = rpcs.filter(
-    (rpc) => rpc.network === "mainnet"
-  );
-
-  const testnet = rpcs.filter(
-    (rpc) => rpc.network === "testnet"
-  );
-
   return (
-    <main className="min-h-screen">
+    <main className="flex min-h-screen bg-slate-950 text-white">
 
-      <div className="mx-auto max-w-7xl px-6">
+      <Sidebar />
+
+      <section className="flex-1 p-8">
 
         <Navbar />
 
-        <section className="py-16">
+        <div className="mb-10">
 
-          <h1 className="text-6xl font-black">
-            RPC Analytics
+          <h1 className="text-5xl font-black">
+            Infrastructure Overview
           </h1>
 
-          <h1 className="text-6xl font-black bg-gradient-to-r from-violet-500 via-blue-500 to-green-400 bg-clip-text text-transparent">
-            on Monad
-          </h1>
-
-          <p className="mt-6 max-w-xl text-slate-400">
-            Monitor, benchmark and compare Monad RPC providers.
+          <p className="mt-3 text-slate-400">
+            RPC Analytics on Monad
           </p>
 
-          <input
-            className="mt-10 w-full rounded-2xl border border-slate-800 bg-slate-900 px-5 py-4 outline-none focus:border-violet-500"
-            placeholder="Search RPC provider..."
+        </div>
+
+        <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
+
+          <StatsCard
+            title="Providers"
+            value="12"
           />
 
-        </section>
+          <StatsCard
+            title="Online"
+            value="11"
+          />
 
-        <section>
+          <StatsCard
+            title="Avg Latency"
+            value="82ms"
+          />
 
-          <h2 className="mb-6 text-2xl font-bold">
-            Mainnet Providers
-          </h2>
+          <StatsCard
+            title="Incidents"
+            value="1"
+          />
 
-          <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
+        </div>
 
-            {mainnet.map((rpc) => (
-              <RpcCard
-                key={rpc.name}
-                rpc={rpc}
-              />
-            ))}
-
-          </div>
-
-        </section>
-
-        <section className="mt-16 pb-24">
-
-          <h2 className="mb-6 text-2xl font-bold">
-            Testnet Providers
-          </h2>
-
-          <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
-
-            {testnet.map((rpc) => (
-              <RpcCard
-                key={rpc.name}
-                rpc={rpc}
-              />
-            ))}
-
-          </div>
-
-        </section>
-
-      </div>
+      </section>
 
     </main>
   );
