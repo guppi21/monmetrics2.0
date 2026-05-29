@@ -4,6 +4,7 @@ import Navbar from "@/components/layout/navbar";
 import ActivityFeed from "@/components/dashboard/activity-feed";
 import Incidents from "@/components/dashboard/incidents";
 import LiveStats from "@/components/dashboard/live-stats";
+import LastUpdated from "@/components/dashboard/last-updated";
 
 import RpcMetrics from "@/components/rpc/rpc-metrics";
 import RpcCompare from "@/components/rpc/rpc-compare";
@@ -28,6 +29,10 @@ export default function Home() {
 
         <div className="mb-8">
           <LiveStats />
+        </div>
+
+        <div className="mb-6">
+          <LastUpdated />
         </div>
 
         <div className="grid gap-6 lg:grid-cols-2">
