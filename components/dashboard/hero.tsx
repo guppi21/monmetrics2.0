@@ -7,30 +7,29 @@ export default function Hero() {
     <section
       className="
       relative
-
       flex
-      min-h-screen
-
+      min-h-[85vh]
+      lg:min-h-screen
       flex-col
       items-center
       justify-center
-
       overflow-hidden
-
       text-center
+      px-4
       "
     >
       {/* MAIN SPOTLIGHT */}
-
       <div
         className="
         absolute
-
         left-1/2
-        top-[-500px]
+        top-[-300px]
 
-        h-[2200px]
-        w-[180px]
+        h-[1200px]
+        w-[80px]
+
+        lg:h-[2200px]
+        lg:w-[180px]
 
         -translate-x-1/2
         rotate-[18deg]
@@ -41,22 +40,22 @@ export default function Hero() {
         to-transparent
 
         blur-[70px]
-
         pointer-events-none
         "
       />
 
       {/* SECONDARY SPOTLIGHT */}
-
       <div
         className="
         absolute
-
         left-[47%]
-        top-[-400px]
+        top-[-250px]
 
-        h-[1800px]
-        w-[100px]
+        h-[900px]
+        w-[50px]
+
+        lg:h-[1800px]
+        lg:w-[100px]
 
         rotate-[-12deg]
 
@@ -66,26 +65,26 @@ export default function Hero() {
         to-transparent
 
         blur-[60px]
-
         pointer-events-none
         "
       />
 
       {/* LABEL */}
-
       <div
         className="
         relative
         z-10
 
-        mb-6
+        mb-4
 
-        text-sm
+        text-[10px]
+        sm:text-xs
+
         font-semibold
-
         uppercase
 
-        tracking-[0.45em]
+        tracking-[0.25em]
+        sm:tracking-[0.45em]
 
         text-cyan-300
         "
@@ -94,19 +93,18 @@ export default function Hero() {
       </div>
 
       {/* TITLE */}
-
       <h1
         className="
         relative
         z-10
 
-        text-7xl
-        font-black
-
-        leading-none
-
-        sm:text-8xl
+        text-5xl
+        sm:text-6xl
+        md:text-7xl
         lg:text-[140px]
+
+        font-black
+        leading-none
         "
       >
         <span
@@ -129,38 +127,37 @@ export default function Hero() {
       </h1>
 
       {/* SUBTITLE */}
-
       <p
         className="
         relative
         z-10
 
-        mt-6
+        mt-4
 
-        max-w-2xl
+        max-w-md
+        px-4
 
-        text-xl
+        text-base
+        sm:text-lg
+        lg:text-2xl
 
         text-slate-300
-
-        lg:text-2xl
         "
       >
         Track Every Monad RPC
       </p>
 
       {/* NETWORK SWITCH */}
-
-      <div className="relative z-10 mt-10">
+      <div className="relative z-10 mt-8 lg:mt-10">
         <NetworkSwitch />
       </div>
 
       {/* SCROLL INDICATOR */}
-
       <div
         className="
         absolute
-        bottom-12
+        bottom-8
+        lg:bottom-12
 
         flex
         flex-col
@@ -171,12 +168,9 @@ export default function Hero() {
       >
         <div
           className="
-          text-xs
-
+          text-[10px]
           uppercase
-
-          tracking-[0.4em]
-
+          tracking-[0.3em]
           text-slate-500
           "
         >
@@ -185,7 +179,8 @@ export default function Hero() {
 
         <div
           className="
-          h-12
+          h-10
+          lg:h-12
           w-[2px]
 
           rounded-full
