@@ -2,6 +2,14 @@
 
 import NetworkSwitch from "@/components/network-switch";
 
+import {
+  Trophy,
+  BarChart3,
+  Globe,
+  Activity,
+  BellRing,
+} from "lucide-react";
+
 export default function Hero() {
   return (
     <section
@@ -153,42 +161,80 @@ export default function Hero() {
         relative
         z-10
 
-        mt-6
+        mt-8
 
         flex
         flex-wrap
         justify-center
         items-center
 
-        gap-2
+        gap-x-4
+        gap-y-3
 
-        max-w-5xl
-        px-4
+        max-w-6xl
 
         text-xs
         sm:text-sm
-        md:text-base
+        lg:text-base
 
         text-slate-300
         "
       >
-        <span>🏆 Provider Rankings</span>
+        <div className="flex items-center gap-2">
+          <Trophy
+            size={16}
+            className="text-cyan-300"
+          />
+          <span>Provider Rankings</span>
+        </div>
 
-        <span className="text-slate-500">•</span>
+        <span className="hidden md:block text-slate-600">
+          │
+        </span>
 
-        <span>📊 Live Metrics</span>
+        <div className="flex items-center gap-2">
+          <BarChart3
+            size={16}
+            className="text-cyan-300"
+          />
+          <span>Network Metrics</span>
+        </div>
 
-        <span className="text-slate-500">•</span>
+        <span className="hidden md:block text-slate-600">
+          │
+        </span>
 
-        <span>🌎 Global Map</span>
+        <div className="flex items-center gap-2">
+          <Globe
+            size={16}
+            className="text-cyan-300"
+          />
+          <span>Global RPC Map</span>
+        </div>
 
-        <span className="text-slate-500">•</span>
+        <span className="hidden md:block text-slate-600">
+          │
+        </span>
 
-        <span>📈 Latency Analytics</span>
+        <div className="flex items-center gap-2">
+          <Activity
+            size={16}
+            className="text-cyan-300"
+          />
+          <span>Latency Insights</span>
+        </div>
 
-        <span className="text-slate-500">•</span>
+        <span className="hidden md:block text-slate-600">
+          │
+        </span>
 
-        <span>🚨 Discord & Telegram Alerts</span>
+        <div className="flex items-center gap-2">
+          <BellRing
+            size={16}
+            className="text-cyan-300"
+          />
+          <span>Alert Center</span>
+        </div>
       </div>
 
       {/* NETWORK SWITCH */}
