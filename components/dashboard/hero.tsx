@@ -147,6 +147,50 @@ export default function Hero() {
         Track Every Monad RPC
       </p>
 
+      {/* FEATURES */}
+      <div
+        className="
+        relative
+        z-10
+
+        mt-6
+
+        flex
+        flex-wrap
+        justify-center
+        items-center
+
+        gap-2
+
+        max-w-5xl
+        px-4
+
+        text-xs
+        sm:text-sm
+        md:text-base
+
+        text-slate-300
+        "
+      >
+        <span>🏆 Provider Rankings</span>
+
+        <span className="text-slate-500">•</span>
+
+        <span>📊 Live Metrics</span>
+
+        <span className="text-slate-500">•</span>
+
+        <span>🌎 Global Map</span>
+
+        <span className="text-slate-500">•</span>
+
+        <span>📈 Latency Analytics</span>
+
+        <span className="text-slate-500">•</span>
+
+        <span>🚨 Discord & Telegram Alerts</span>
+      </div>
+
       {/* NETWORK SWITCH */}
       <div className="relative z-10 mt-8 lg:mt-10">
         <NetworkSwitch />
